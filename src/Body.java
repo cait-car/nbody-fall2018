@@ -1,4 +1,3 @@
-
 public class Body {
 	// initialize private variables
 	private double myXPos;
@@ -29,46 +28,55 @@ public class Body {
 		myFileName = b.getName();	
 	}
 	
-	//getter methods 
+	//getter method
 	public double getYVel() {
 		return myYVel;
 	}
+	//getter method
 	public double getXVel() {
 		return myXVel;
 	}
+	//getter method
 	public double getX() {
 		return myXPos; 
 	}
+	//getter method
 	public double getY() {
 		return myYPos;
 	}
+	//getter method
 	public double getMass() {
 		return myMass;
 	}
+	//getter method
 	public String getName () {
 		return myFileName;
 	}
 	
+	// calculates the distance between the bodies 
 	public double calcDistance(Body b) {
 		double distance = Math.sqrt(((myXPos - b.getX()) * (myXPos - b.getX())) + ((myYPos - b.getY()) * (myYPos - b.getY())));
 		return distance;
 	}
 	
+	// calculates the force exerted on the body by the body in the parameter
 	public double calcForceExertedBy(Body p) {
 		double force = (6.67e-11) * ((myMass * p.getMass())/ (calcDistance(p)*calcDistance(p)));
 		return force;
 	}
 	
+	// calculates the force exerted in the x direction 
 	public double calcForceExertedByX(Body p) {
 		double forceByX = calcForceExertedBy(p) * ((p.getX() - myXPos) / calcDistance(p));
 		return forceByX;
 	}
 	
+	// calculates the force exerted in the y direction
 	public double calcForceExertedByY(Body p) {
 		double forceByY = calcForceExertedBy(p) * ((p.getY() - myYPos) / calcDistance(p));
 		return forceByY;	
 	}
-	
+	// calculates the x net force exerted on the body by the many bodies in the parameter
 	public double calcNetForceExertedByX(Body [] bodies) {
 		double netForceX = 0;
 		for (Body b : bodies) {
@@ -78,7 +86,7 @@ public class Body {
 		}
 	return netForceX;
 	}
-	
+	// calculates the y net force exerted on the body by the many bodies in the parameter
 	public double calcNetForceExertedByY(Body [] bodies) {
 		double netForceY = 0;
 		for (Body b : bodies) {
@@ -89,6 +97,7 @@ public class Body {
 	return netForceY; 
 	}
 	
+	// mutator that updates the variables of body 
 	public void update( double deltaT, double xforce, double yforce) {
 		double accelerationX = xforce / myMass; 
 		double accelerationY = yforce / myMass;
@@ -102,6 +111,7 @@ public class Body {
 		myYVel = nvy;	
 	}
 	
+	// draws the bodies
 	public void draw() {
 		StdDraw.picture(myXPos, myYPos, "images/"+myFileName);
 	}
