@@ -105,7 +105,7 @@ public class NBody {
 			
 			// TODO: loop over all bodies and call update
 			// with dt and corresponding xforces, yforces values
-			int j = 1;
+			int j = 0;
 			for(Body b : bodies) {
 				b.update(dt, xforces[j], yforces[j]);
 				j+=1;
