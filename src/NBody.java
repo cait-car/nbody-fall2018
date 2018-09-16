@@ -17,6 +17,8 @@ public class NBody {
 	 * @return the radius stored in the file
 	 * @throws FileNotFoundException if fname cannot be open
 	 */
+	
+	//reads the radius and the number of bodies from the file
 	public static double readRadius(String fname) throws FileNotFoundException  {
 		Scanner s = new Scanner(new File(fname));
 		
@@ -38,6 +40,8 @@ public class NBody {
 	 * @return array of Body objects read
 	 * @throws FileNotFoundException if fname cannot be open
 	 */
+	
+	// scans file and creates new array
 	public static Body[] readBodies(String fname) throws FileNotFoundException {
 		
 			Scanner s = new Scanner(new File(fname));
@@ -48,7 +52,7 @@ public class NBody {
 			double radius = s.nextDouble();
 			Body[] bodies = new Body[nb];
 		
-			
+			//reads through file and separates the data into the corresponding arrays
 			for(int k=0; k < nb; k++) {
 				double ixpos = s.nextDouble();
 				double iypos = s.nextDouble();
@@ -66,6 +70,7 @@ public class NBody {
 			// DONE: return array of body objects read
 			return bodies;
 	}
+	// method used to create the file of the simulation
 	public static void main(String[] args) throws FileNotFoundException{
 		double totalTime = 157788000.0;
 		double dt = 25000.0;
@@ -92,7 +97,7 @@ public class NBody {
 			double yforces[] = new double[bodies.length];
 			
 			
-			// TODO: loop over all bodies, calculate
+			// DONE loop over all bodies, calculate
 			// net forces and store in xforces and yforces
 			
 			int i = 0;
@@ -103,7 +108,7 @@ public class NBody {
 			}
 			
 			
-			// TODO: loop over all bodies and call update
+			// DONE loop over all bodies and call update
 			// with dt and corresponding xforces, yforces values
 			int j = 0;
 			for(Body b : bodies) {
@@ -113,7 +118,7 @@ public class NBody {
 			
 			StdDraw.picture(0,0,"images/starfield.jpg");
 			
-			// TODO: loop over all bodies and call draw on each one
+			// DONE loop over all bodies and call draw on each one
 			
 			StdDraw.show(10);
 		}
